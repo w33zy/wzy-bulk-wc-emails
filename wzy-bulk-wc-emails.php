@@ -40,6 +40,7 @@ class wzy_Bulk_WC_Emails {
 
 	public static function add_filters(): void {
 		add_filter( 'bulk_actions-edit-shop_order', [ __CLASS__, 'add_send_email_action' ] );
+		add_filter( 'woocommerce_new_order_email_allows_resend', '__return_true' );
 	}
 
 	public static function add_actions(): void {
