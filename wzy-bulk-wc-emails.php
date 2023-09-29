@@ -70,6 +70,10 @@ class wzy_Bulk_WC_Emails {
 	 */
 	public static function process_bulk_send_email_action( string $send_back, string $do_action, array $items ): void {
 
+		if ( ! array_key_exists( $do_action, self::$wc_emails ) ) {
+			return;
+		}
+
 		foreach ( $items as $order_id ) {
 			$order = wc_get_order( $order_id );
 			if ( $order instanceof \WC_Order ) {
